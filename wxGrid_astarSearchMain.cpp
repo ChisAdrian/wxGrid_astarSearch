@@ -232,23 +232,32 @@ void wxGrid_astarSearchFrame::OnButton1Click(wxCommandEvent& event)
          }
     }
 
+     for(int c=0;c<walk_table.at(0).size();c++ )
+        Grid1->SetColLabelValue(c,wxString::FromDouble(c,0));
+
+    for(int i=0;i<walk_table.size();i++ )
+        Grid1->SetRowLabelValue(i,wxString::FromDouble(i,0));
+
 
     Grid1->AutoSizeColumns();
 
     std::vector<Pair> All_Nodes;
-     All_Nodes.push_back(std::make_pair(23,79));
 
-    All_Nodes.push_back(std::make_pair(18,40));
-    All_Nodes.push_back(std::make_pair(17,53));
+        All_Nodes.push_back(std::make_pair(23,59));
+        All_Nodes.push_back(std::make_pair(2,40));
+        All_Nodes.push_back(std::make_pair(23,79));
+        All_Nodes.push_back(std::make_pair(12,19));
+        All_Nodes.push_back(std::make_pair(8,6));
+        All_Nodes.push_back(std::make_pair(1,30));
+        All_Nodes.push_back(std::make_pair(18,40));
+        All_Nodes.push_back(std::make_pair(17,53));
+        All_Nodes.push_back(std::make_pair(23,13));
+        All_Nodes.push_back(std::make_pair(24,79));
 
-    All_Nodes.push_back(std::make_pair(23,13));
-
-     All_Nodes.push_back(std::make_pair(24,79));
-
-    auto minR = Colect_Route(walk_table,All_Nodes,std::make_pair(9, 0));
+    auto minR = Colect_Route(walk_table,All_Nodes,std::make_pair(0, 0));
 
     size_t loop_minR = minR.size();
-      for(auto r= 0;r<loop_minR ;r++)
+      for(auto r = 0;r<loop_minR ;r++)
       {
             auto minPTH =  minR.at(r);
             for (int i = minPTH.size() - 1; i >= 0; --i)
